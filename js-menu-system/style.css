@@ -1,0 +1,33 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    padding: 50px;
+}
+
+
+.card{
+    margin: 10px 0px 10px 0px;
+    height: auto;
+    width: 20rem;
+    padding: 25px;
+    border: 2px solid black;
+   border-radius: 10px;
+}
+.menu{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.buttons{
+    display: flex;
+    flex-direction: row;
+}
+.btn{
+    background-color: lightseagreen;
+    padding: 14px;
+    margin: 10px;
+    border-radius: 6px;
+    width: 150px;
+}
