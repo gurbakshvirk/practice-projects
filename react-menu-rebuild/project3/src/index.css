@@ -1,0 +1,16 @@
+
+.menu{
+   display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.card{
+    margin: 10px 0px 10px 0px;
+    height: auto;
+    width: 20rem;
+    padding: 25px;
+    border: 2px solid black;
+   border-radius: 10px;
+   background: rgba(0, 0, 0, 0.206);
+}
