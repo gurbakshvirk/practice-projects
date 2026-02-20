@@ -4,7 +4,9 @@ import { useNavigate } from "react-router-dom"
 import { CartContext } from "../context/Cartcontext";
 import { useContext } from "react";
 import { Link } from 'react-router-dom';
+// import { useNavigate } from "react-router-dom";
 
+// const navigate = useNavigate();
 const Navbar = () => {
 
 
@@ -37,7 +39,7 @@ const Navbar = () => {
   };
   return (
     <div>
-      <h3>Navbar</h3>
+      <h3 onClick={() => navigate("/")}>Navbar</h3>
       <h4>Cart count: {cart.length}</h4>
       <Link to="/cart">
         <button>
