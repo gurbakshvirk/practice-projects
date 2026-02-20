@@ -1,0 +1,215 @@
+⚙️ PROJECT 1 (Day 1–3)
+js-menu-system → Pure JavaScript Brain Training
+📁 Folder Setup
+js-menu-system/
+ ├── index.html
+ ├── style.css   (very basic, don’t waste time)
+ └── app.js
+
+🎯 What You Are Building
+A fully dynamic restaurant menu using ONLY Vanilla JS.
+🔧 Data (Hardcode in app.js)
+Create array:
+
+const foods = [
+ { id:1, name:"Paneer Tikka", category:"veg", price:250 },
+ { id:2, name:"Chicken Curry", category:"nonveg", price:320 },
+ ...
+]
+
+Add at least 15 items.
+✅ Features To Implement
+1️⃣ Render Items Dynamically
+Nothing written in HTML.
+JS must create cards using createElement.
+2️⃣ Category Filter Buttons
+Buttons:
+All | Veg | Non-Veg | Drinks
+Click → filter array → re-render.
+3️⃣ Search Bar
+Typing should instantly filter by name.
+4️⃣ Sort Dropdown
+Price Low → High
+Price High → Low
+5️⃣ Empty State
+If nothing matches → show:
+"No Items Found"
+🧠 Skills This Builds
+DOM control
+Data → UI mapping
+Real filtering logic
+Re-render mindset (important for React)
+
+
+---------------------------------------------------------------------------
+⚙️ PROJECT 2 (Day 4–5)
+js-menu-async-cart → Async + State Simulation
+Copy previous project → extend it.
+🎯 Now You Simulate Backend Behavior
+1️⃣ Fake API Call
+Wrap data in:
+function fetchFoods(){
+ return new Promise(resolve=>{
+   setTimeout(()=> resolve(foods), 1000)
+ })
+}
+Show:
+Loading menu...
+before render.
+2️⃣ Add To Cart System (LocalStorage)
+Each card gets Add to Cart button.
+Store cart:
+localStorage.setItem("cart", JSON.stringify(cart))
+3️⃣ Cart Counter in Navbar
+Must update live when items added.
+4️⃣ Error Simulation Button
+Create button:
+"Simulate Server Error"
+Show error UI + Retry option.
+🧠 Skills This Builds
+Async thinking
+UI states (loading/error/success)
+Persistence
+App lifecycle understanding
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+⚙️ PROJECT 3 (Day 6–7)
+react-menu-rebuild → Convert Same Logic to React
+Now open new Vite app.
+npm create vite@latest react-menu-rebuild
+DO NOT COPY OLD CODE.
+Rebuild from memory.
+📁 Component Structure
+src/
+ ├── components/
+ │    ├── Menu.jsx
+ │    ├── Filters.jsx
+ │    ├── FoodCard.jsx
+ │    └── Navbar.jsx
+ └── App.jsx
+✅ Features (Same as JS Version)
+But now using:
+useState
+useEffect
+props
+derived filtering
+No Context. No Redux.
+🧠 Skills This Builds
+Understanding:
+React is just re-rendering your JS logic.
+---------------------------------------------------------------------------------------------------------------------------
+
+⚙️ PROJECT 4 (Day 8–9)
+react-cart-system → Real React Thinking
+Extend Project 3.
+🎯 Add Real Cart Logic
+1️⃣ Add / Remove / Increase Quantity
+Cart shape:
+{
+ id,
+ name,
+ price,
+ qty
+}
+2️⃣ Cart Page
+Create:
+/cart
+3️⃣ Total Price Calculation
+Must compute dynamically (no stored totals).
+4️⃣ Persist Cart on Refresh
+Use:
+useEffect → localStorage sync
+🧠 Skills This Builds
+State architecture
+Lifting state correctly
+Derived data
+Avoiding duplication bugs
+-----------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+⚙️ PROJECT 5 (Day 10–11)
+react-admin-simulator → CRUD Mastery
+This is a fake admin dashboard (no backend yet).
+📁 Pages
+/admin
+/admin/add-product
+/admin/edit-product/:id
+✅ Features
+Add Product Form
+Fields:---
+name
+price
+category
+image (just preview)
+isPopular (checkbox)
+isAvailable (toggle)
+Product Table
+Show all products from localStorage.
+Edit Product
+Prefill form → update.
+Delete Product
+Remove from storage.
+🧠 Skills This Builds
+Real CRUD mental model (used).
+
+
+
+
+
+⚙️ PROJECT 6 (Day 12–13)
+react-api-integration → Connect Your Real Backend
+Now you connect to your existing backend APIs.
+Do NOT import old services.
+Rewrite manually.
+Create New Service File
+src/services/productService.js
+Write fetch logic yourself using fetch() (not axios first).
+Features
+Load products from DB
+Add product
+Delete product
+Handle loading properly
+Handle API errors cleanly
+🧠 Skills This Builds
+Frontend ↔ Backend understanding without copying.
+
+
+
+
+⚙️ PROJECT 7 (Day 14)
+react-order-flow → Complete User Flow
+Use API + cart system together.
+Build Checkout Page
+Form:
+Name
+Phone
+Address
+Order Type (Pickup/Delivery)
+On Submit
+Send:
+{
+ customerInfo,
+ cartItems,
+ totalAmount,
+ orderType
+}
+(No payment integration needed yet.)
+🧠 Skills This Builds
+Understanding of real data flow (orders).
+
+
+
+⚙️ PROJECT 8 (Day 15)
+memory-rebuild-test → Mastery Lock
+Delete one module completely.
+Example:
+Delete cart system.
+Rebuild it without seeing previous code.
+If you can rebuild → you own the knowledge.
