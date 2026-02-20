@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 // import { useState } from "react"
+import { CartContext } from "../context/Cartcontext";
+import { useContext } from "react";
+import { Link } from 'react-router-dom';
+
+const Navbar = () => {
 
 
-const Navbar = ({ text, cart }) => {
-
+  const { cart } = useContext(CartContext);
   const [searchText, setSearchText] = useState("")
   const navigate = useNavigate()
 
@@ -35,6 +39,12 @@ const Navbar = ({ text, cart }) => {
     <div>
       <h3>Navbar</h3>
       <h4>Cart count: {cart.length}</h4>
+      <Link to="/cart">
+        <button>
+          Go to cart Page
+        </button>
+      </Link>
+
       {/* <input type="text" placeholder='Search here..........'
         value={text}
         onChange={handleChange}
