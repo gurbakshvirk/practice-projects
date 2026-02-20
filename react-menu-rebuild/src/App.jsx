@@ -9,11 +9,13 @@
     // const [selectedCategory, setSelectedCategory] = useState("all")
     const [foods, setFoods] = useState(foodsData)
     // const [searchText, setSearchText] = useState("")
-    const [currentSort, setcurrentSort] = useState("")
+    // const [currentSort, setcurrentSort] = useState("")
+
+
     const [searchParams] = useSearchParams();
     const selectedCategory = searchParams.get("category") || "all";
-
     const SearchText = searchParams.get("search") || "";
+    const currentSort = searchParams.get("sort") || "default";
 
     let filteredfooddata = foods;
 
@@ -30,25 +32,23 @@
         return evt.name.toLowerCase().includes(SearchText);
       });
     }
-
     // price sort filter 
-    // if (currentSort === "low") {
-    //     ffoods = ffoods.slice().sort(function (a, b) {
-    //         return a.price - b.price;
-    //     });
-    // }
-
-    // if (currentSort === "high") {
-    //     ffoods = ffoods.slice().sort(function (a, b) {
-    //         return b.price - a.price;
-    //     });
-    // }
+    if (currentSort === "low") {
+        filteredfooddata = filteredfooddata.slice().sort(function (a, b) {
+            return a.price - b.price;
+        });
+    }
+    if (currentSort === "high") {
+        filteredfooddata = filteredfooddata.slice().sort(function (a, b) {
+            return b.price - a.price;
+        });
+    }
 
 
     return (
       <div>
         <Navbar />
-        <Filters categories={categoriesData} setsort={setcurrentSort} />
+        <Filters categories={categoriesData} />
         <Menu foods={filteredfooddata} />
       </div>
     )
