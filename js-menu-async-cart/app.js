@@ -219,12 +219,6 @@ search.addEventListener("input", function (e) {
 
 
 // render cart 
-
-
-
-
-
-
 let cartqty = document.querySelector(".cart")
 function renderCart() {
     cartqty.innerHTML = ""

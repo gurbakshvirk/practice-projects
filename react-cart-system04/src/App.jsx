@@ -4,6 +4,7 @@
   import Filters from './components/Filters'
   import Menu from './components/Menu'
   import { foods as foodsData, categories as categoriesData } from './components/data'
+import Cart from "./pages/Cart";
 
   const App = () => {
     // const [selectedCategory, setSelectedCategory] = useState("all")
@@ -18,6 +19,7 @@
     const selectedCategory = searchParams.get("category") || "all";
     const SearchText = searchParams.get("search") || "";
     const currentSort = searchParams.get("sort") || "default";
+    const [cart, setCart] = useState([]);
 
     let filteredfooddata = foods;
 
@@ -49,11 +51,15 @@
 
 
     return (
+      <>
+      
       <div>
-        <Navbar />
+        <Navbar cart={cart} />
         <Filters categories={categoriesData} />
-        <Menu foods={filteredfooddata} />
+        <Menu foods={filteredfooddata} cart={cart} setCart={setCart}  />
       </div>
+      <Cart/>
+      </>
     )
   }
 

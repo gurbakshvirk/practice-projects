@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 // import { useState } from "react"
 
 
-const Navbar = ({ text }) => {
+const Navbar = ({ text, cart }) => {
 
   const [searchText, setSearchText] = useState("")
   const navigate = useNavigate()
@@ -13,20 +13,20 @@ const Navbar = ({ text }) => {
     e.preventDefault()
 
     if (!searchText.trim()) return
-      
+
     navigate(`/menu?search=${searchText}`)
   }
   const handleSearchChange = (e) => {
-  const value = e.target.value;
-  setSearchText(value);
+    const value = e.target.value;
+    setSearchText(value);
 
-  if (!value.trim()) {
-    navigate("/menu");   // reset when empty
-    return;
-  }
+    if (!value.trim()) {
+      navigate("/menu");   // reset when empty
+      return;
+    }
 
-  navigate(`/menu?search=${encodeURIComponent(value)}`);
-};
+    navigate(`/menu?search=${encodeURIComponent(value)}`);
+  };
 
   // const handleChange = (e) => {
   //   setSearchText(e.target.value);
@@ -34,9 +34,10 @@ const Navbar = ({ text }) => {
   return (
     <div>
       <h3>Navbar</h3>
-      {/* <input type="text" placeholder='Search here..........'
+      <h4>Cart count: {cart.length}</h4>
+      <input type="text" placeholder='Search here..........'
         value={text}
-        onChange={handleChange} /> */}
+        onChange={handleChange} />
 
 
       <form>
@@ -44,7 +45,7 @@ const Navbar = ({ text }) => {
           type="text"
           placeholder="Search food..."
           value={searchText}
-         onChange={handleSearchChange}
+          onChange={handleSearchChange}
         />
       </form>
 
