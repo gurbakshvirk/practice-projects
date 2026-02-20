@@ -12,6 +12,8 @@
     // const [currentSort, setcurrentSort] = useState("")
 
 
+
+
     const [searchParams] = useSearchParams();
     const selectedCategory = searchParams.get("category") || "all";
     const SearchText = searchParams.get("search") || "";
@@ -28,8 +30,9 @@
 
     // search filter 
     if (SearchText !== "") {
+      const query = SearchText.toLowerCase();
       filteredfooddata = filteredfooddata.filter(function (evt) {
-        return evt.name.toLowerCase().includes(SearchText);
+        return evt.name.toLowerCase().includes(query);
       });
     }
     // price sort filter 

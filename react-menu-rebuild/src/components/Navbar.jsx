@@ -16,6 +16,17 @@ const Navbar = ({ text }) => {
       
     navigate(`/menu?search=${searchText}`)
   }
+  const handleSearchChange = (e) => {
+  const value = e.target.value;
+  setSearchText(value);
+
+  if (!value.trim()) {
+    navigate("/menu");   // reset when empty
+    return;
+  }
+
+  navigate(`/menu?search=${encodeURIComponent(value)}`);
+};
 
   // const handleChange = (e) => {
   //   setSearchText(e.target.value);
@@ -26,12 +37,14 @@ const Navbar = ({ text }) => {
       {/* <input type="text" placeholder='Search here..........'
         value={text}
         onChange={handleChange} /> */}
-      <form onSubmit={handleSearch}>
+
+
+      <form>
         <input
           type="text"
           placeholder="Search food..."
           value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
+         onChange={handleSearchChange}
         />
       </form>
 

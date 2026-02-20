@@ -27,6 +27,8 @@ const Filters = ({ categories, setSelectedCategory, setsort }) => {
 
     navigate(url + params.join("&"));
   };
+
+  
   //   const currentCategory = searchParams.get("category") || "";
   // const handleHighclick = (value) =>{
   //  if (currentSearch) {
