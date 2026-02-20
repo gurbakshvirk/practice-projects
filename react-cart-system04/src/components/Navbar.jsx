@@ -9,13 +9,13 @@ const Navbar = ({ text, cart }) => {
   const navigate = useNavigate()
 
 
-  const handleSearch = (e) => {
-    e.preventDefault()
+  // const handleSearch = (e) => {
+  //   e.preventDefault()
 
-    if (!searchText.trim()) return
+  //   if (!searchText.trim()) return
 
-    navigate(`/menu?search=${searchText}`)
-  }
+  //   navigate(`/menu?search=${searchText}`)
+  // }
   const handleSearchChange = (e) => {
     const value = e.target.value;
     setSearchText(value);
@@ -28,16 +28,17 @@ const Navbar = ({ text, cart }) => {
     navigate(`/menu?search=${encodeURIComponent(value)}`);
   };
 
-  // const handleChange = (e) => {
-  //   setSearchText(e.target.value);
-  // };
+  const handleChange = (e) => {
+    setSearchText(e.target.value);
+  };
   return (
     <div>
       <h3>Navbar</h3>
       <h4>Cart count: {cart.length}</h4>
-      <input type="text" placeholder='Search here..........'
+      {/* <input type="text" placeholder='Search here..........'
         value={text}
-        onChange={handleChange} />
+        onChange={handleChange}
+         /> */}
 
 
       <form>
