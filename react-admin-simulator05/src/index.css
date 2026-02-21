@@ -7,7 +7,6 @@
     flex-wrap: wrap;
     gap: 10px;
 }
-
 .card{
     margin: 10px 0px 10px 0px;
     height: auto;
@@ -17,7 +16,6 @@
    border-radius: 10px;
    background: rgba(0, 0, 0, 0.206);
 }
-
 .card img{
     height: 15rem;
     border-radius: 10%;

@@ -52,7 +52,6 @@ const Addproduct = () => {
       [name]: type === "checkbox" ? checked : value
     }));
   };
-  // console.log(product)
   return (
     <div>
       <h1>{editingProduct ? "Edit Product" : "Add Product"}</h1>

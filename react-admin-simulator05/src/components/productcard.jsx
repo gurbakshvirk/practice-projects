@@ -19,11 +19,9 @@ const Productcard = () => {
           <h3>{food.name}</h3>
           <h5>Price.{food.price}</h5>
           <h4 >{food.category}</h4>
-          {/* <h1>{food.image}</h1> */}
           <h6>ID {food.id}</h6>
           <button onClick={() => {
             setEditingProduct(food);
-            // navigate("/addproduct");
           }}>Edit</button>
           <button onClick={() => { deleteProduct(food.id) }}>Delete</button>
 

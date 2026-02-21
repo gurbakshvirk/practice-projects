@@ -1,9 +1,11 @@
-import Admin from './pages/Admin'
+import React from 'react'
+
 const App = () => {
   return (
     <div>
-    <Admin/>
-    </div>   
+      App
+    </div>
   )
 }
+
 export default App

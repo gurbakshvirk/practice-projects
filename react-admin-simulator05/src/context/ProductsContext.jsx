@@ -7,24 +7,14 @@ export const ProductsProvider = ({ children }) => {
 
     const [products, setProducts] = useState([])
     const [editingProduct, setEditingProduct] = useState(null);
-
-    // let Products = localStorage.getItem("products");
-    // let Strproducts = JSON.parse(Products)
-
     useEffect(() => {
         const stored = localStorage.getItem("products");
         let Strproducts = JSON.parse(stored)
         setProducts(Strproducts)
     }, [])
 
-    console.log(products)
-
-
-
     const deleteProduct = (id) => {
-
         const updatedProducts = products.filter((item) => item.id !== id);
-
         setProducts(updatedProducts);
         localStorage.setItem("products", JSON.stringify(updatedProducts));
     };
