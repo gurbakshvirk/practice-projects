@@ -1,9 +1,10 @@
 import React from 'react'
+import Admin from './pages/Admin'
 
 const App = () => {
   return (
     <div>
-      App
+      <Admin/>
     </div>
   )
 }

@@ -1,4 +1,3 @@
-import React from 'react'
 import { useContext, useEffect, useState } from "react"
 import { ProductsContext } from '../context/ProductsContext'
 
@@ -26,7 +25,7 @@ const Addproduct = () => {
 
 
     if (editingProduct) {
-      updateProduct(product); 
+      updateProduct(product);
 
     } else {
       addProduct(product);
