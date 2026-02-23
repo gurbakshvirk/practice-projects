@@ -4,6 +4,9 @@ export const CartContext = createContext();
 export const CartProvider = ({ children }) => {
 
 // read from localStorage first
+
+
+
   const [cart, setCart] = useState(() => {
     const storedCart = localStorage.getItem("cart");
     return storedCart ? JSON.parse(storedCart) 
