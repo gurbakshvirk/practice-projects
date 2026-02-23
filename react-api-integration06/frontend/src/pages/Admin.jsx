@@ -6,7 +6,7 @@ import Allproducts from './Allproducts'
 import EditProduct from './EditProduct';
 const Admin = () => {
   return (
-    <div>
+    <div className='maindiv'>
 
       <h3>Admin page</h3>
       <Addproduct/>
