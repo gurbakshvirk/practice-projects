@@ -4,14 +4,14 @@ const Addproduct = () => {
     //   const { addProduct,  } = useContext(ProductContext);
     const {
         addProduct,
-        updateProduct,
+        handleUpdateProduct,
         editingProduct
     } = useContext(ProductContext);
 
 
 
-    
-    //   updateProduct, editingProduct, setEditingProduct
+
+    //   handleUpdateProduct, editingProduct, setEditingProduct
 
     const [product, setProduct] = useState(
         {
@@ -29,6 +29,8 @@ const Addproduct = () => {
             setProduct(editingProduct);
         }
     }, [editingProduct]);
+
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         // addProduct(product)
@@ -36,9 +38,9 @@ const Addproduct = () => {
         // const updatedProducts = [...oldProducts, product];
         // localStorage.setItem("products", JSON.stringify(updatedProducts));
         if (editingProduct) {
-            updateProduct(product); // EDIT
+            handleUpdateProduct(editingProduct._id, product);
         } else {
-            addProduct(product); // ADD
+            addProduct(product);
         }
         setProduct({
             name: "",

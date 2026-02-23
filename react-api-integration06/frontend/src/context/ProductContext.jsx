@@ -1,69 +1,85 @@
-  import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
+import { getProducts, createProduct, updateProduct, deletetheProduct } from "../services/productService";
+//  getProducts()
+// createProduct(product)
+// updateProduct(id, product)
+// deleteProduct(id)
 
-  export const ProductContext = createContext();
 
-  export const ProductProvider = ({ children }) => {
-    const [products, setProducts] = useState([]);
-const [editingProduct, setEditingProduct] = useState(null);
-    // load on app startt
-    useEffect(() => {
-      const saved =
-        JSON.parse(localStorage.getItem("products")) || [];
+
+export const ProductContext = createContext();
+
+export const ProductProvider = ({ children }) => {
+  const [products, setProducts] = useState([]);
+  const [editingProduct, setEditingProduct] = useState(null);
+
+
+
+  // load on app startt
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const saved = await getProducts() || [];
       setProducts(saved);
-    }, []);
+    };
+    fetchProducts();
+  }, []);
 
-    const startEdit = (product) => {
+
+  // console.log(products
+  const startEdit = (product) => {
   setEditingProduct(product);
 };
-    // const addProduct = (product) => {
-    //   setProducts((prev) => {
-    //     const updated = [...prev, product];
-    //     localStorage.setItem(
-    //       "products",
-    //       JSON.stringify(updated)
-    //     );
-    //     return updated;
-    //   });
-    // };
 
-    const addProduct = (product) => {
-    const newProduct = {
-      ...product,
-      id: Date.now(),
-    };
 
-    setProducts(prev => {
-      const updated = [...prev, newProduct];
-      localStorage.setItem("products", JSON.stringify(updated));
-      return updated;
-    });
+  // createProduct(product)
+  const addProduct = async (product) => {
+   try{
+    const createdproduct = await createProduct(product);
+    setProducts(old=>[...old, createdproduct])
+   }catch (error) {
+    console.error("Error adding product:", error);
+  }
   };
 
 
-    const updateProduct  = (updatedProduct) => {
-  setProducts(prev => {
-    const updated = prev.map(p =>
-      p.id === updatedProduct.id ? updatedProduct : p
-    );
-    localStorage.setItem("products", JSON.stringify(updated));
-    return updated;
-  });
 
-  setEditingProduct(null);
+
+  const deleteProduct = async (id) => {
+  try {
+    await deletetheProduct(id);
+
+    setProducts(prev => prev.filter(p => p._id !== id));
+  } catch (error) {
+    console.error("Error deleting product:", error);
+  }
 };
-   const deleteProduct = (id) => {
-  setProducts(prev => {
-    const updated = prev.filter(p => p.id !== id);
-    localStorage.setItem("products", JSON.stringify(updated));
-    return updated;
-  });
+  
+
+const handleUpdateProduct = async (id, updatedData) => {
+  try {
+    const updatedFromServer = await updateProduct(id, updatedData);
+
+    setProducts(prev =>
+      prev.map(p => (p._id === id ? updatedFromServer : p))
+    );
+
+    setEditingProduct(null);
+  } catch (error) {
+    console.error("Error updating product:", error);
+  }
 };
 
-
-    return (
-      <ProductContext.Provider value={{ products, editingProduct, startEdit,
-  updateProduct, addProduct, deleteProduct }}>
-        {children}
-      </ProductContext.Provider>
-    );
-  };
+  console.log
+  return (
+    <ProductContext.Provider value={{
+  products,
+  editingProduct,
+  startEdit,
+  addProduct,
+  handleUpdateProduct,
+  deleteProduct
+}}>
+      {children}
+    </ProductContext.Provider>
+  );
+};

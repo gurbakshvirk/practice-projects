@@ -20,7 +20,7 @@ const ProductCard = ({ products, startEdit, deleteProduct }) => {
           </div>
           <div className='buttonsdiv'>
             <button onClick={() => startEdit(e)}>Edit</button>
-            <button onClick={() => deleteProduct(e.id)}>Delete</button>
+            <button onClick={() => deleteProduct(e._id)}>Delete</button>
           </div>
           {/* <h2>{e.isPoular}</h2>
           <h2>{e.isAvailable}</h2> */}
