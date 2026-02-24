@@ -6,10 +6,6 @@ require("dotenv").config();
 
 const app = express();
 const productRoutes = require('./routes/productRoutes');
-
-
-
-
 // middlewares
 app.use(cors());
 app.use(express.json());
@@ -19,9 +15,8 @@ app.get("/", (req, res) => {
   res.send("Test app API Running... for product ");
 });
 
+
 app.use("/api/products", productRoutes);
-
-
 // connect DB + start server
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {

@@ -2,9 +2,12 @@ import ProductCard from '../components/ProductCard'
 import React, { useContext, useState } from 'react'
 import { ProductContext } from '../context/ProductContext';
 
+import { CartContext } from '../context/CartContext';
+
 
 
 const Allproducts = () => {
+    const {addtoCart, Cart, setCart} = useContext(CartContext);
 
   const { products, editProduct,startEdit, deleteProduct } = useContext(ProductContext);
 
@@ -19,6 +22,9 @@ const Allproducts = () => {
           // editProduct={editProduct}
           startEdit={startEdit}
           deleteProduct={deleteProduct}
+          addtoCart={addtoCart}
+          Cart={Cart}
+          setCart={setCart}
         />
       </div>
     </div>

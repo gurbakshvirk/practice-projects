@@ -29,7 +29,8 @@ export const CartProvider = ({ children }) => {
       }
 
       return [...oldCart, { ...food, qty: 1 }];
-    });
+    }
+  );
   };
 
     const clearCart = () => setCart([]);

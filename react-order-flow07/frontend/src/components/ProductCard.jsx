@@ -1,6 +1,7 @@
 import React from 'react'
 
-const ProductCard = ({ products, startEdit, deleteProduct,  }) => {
+const ProductCard = ({ products, startEdit, deleteProduct, addtoCart}) => {
+
   // console.log(products)
   //  name: "",
   //           price: "",
@@ -21,7 +22,7 @@ const ProductCard = ({ products, startEdit, deleteProduct,  }) => {
           <div className='buttonsdiv'>
             <button onClick={() => startEdit(e)}>Edit</button>
             <button onClick={() => deleteProduct(e._id)}>Delete</button>
-            <button>Add to Cart</button>
+            <button onClick={() => addtoCart(e)}>Add to Cart</button>
 
           </div>
           {/* <h2>{e.isPoular}</h2>
