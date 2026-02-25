@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const orderRoutes = require("./routes/OrderRoutes");
 
 require("dotenv").config();
 
@@ -15,6 +16,7 @@ app.get("/", (req, res) => {
   res.send("Test app API Running... for product ");
 });
 
+app.use("/api/orders", orderRoutes);
 
 app.use("/api/products", productRoutes);
 // connect DB + start server
